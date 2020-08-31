@@ -1,14 +1,12 @@
-package com.company;
-
 public class Main {
     public static void main(String[] args) {
-        int sum=0, i=1;
-        for(; i<Integer.MAX_VALUE; i++) {
-            if(sum >= Integer.MAX_VALUE-i) break;
-            sum += i;
-            if((int)Math.sqrt(sum)==i)
-                System.out.println(i);
+        int sum=0, x=1;
+        for(; x<Integer.MAX_VALUE; x++) {
+            if(sum >= Integer.MAX_VALUE - x) break;
+            sum += x;
+            if((int)Math.sqrt(sum)==x)
+                System.out.println(x);
         }
-        System.out.println("The program ended at "+i);
+        System.out.println("The program ended at "+x);
     }
 }
