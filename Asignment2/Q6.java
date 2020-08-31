@@ -22,7 +22,7 @@ public class Main {
         while(flag!=0);
         long nk = Long.valueOf(n);
         if(nk > Integer.MAX_VALUE) {
-            System.out.println(nk + " is beyond integer limits." + " Program entered into self destruct mode.");
+            System.out.println(nk + " is beyond integer limits. Program entered into self destruct mode.");
         }
         else if(nk==0)
             System.out.println(0);
@@ -36,14 +36,14 @@ public class Main {
                 System.out.println(nk);
             while (nk != 1) {
                 if (nk > Integer.MAX_VALUE) {
-                    System.out.println(nk + " is beyond integer limits." + " Program entered into self destruct mode.");
+                    System.out.println(nk + " is beyond integer limits. Program entered into self destruct mode.");
                     break;
                 }
                 if (nk % 2 == 0)
                     nk /= 2;
                 else {
                     if (nk * 3 + 1 > Integer.MAX_VALUE) {
-                        System.out.println(nk + "*3+1 is beyond integer limits." + " Program entered into self destruct mode.");
+                        System.out.println(nk + "*3+1 is beyond integer limits. Program entered into self destruct mode.");
                         break;
                     } else
                         nk = nk * 3 + 1;
