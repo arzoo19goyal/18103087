@@ -11,8 +11,7 @@ public class Main {
         for(int i=0; i<n; i++) {
             nums[i]=obj.nextInt();
             while(nums[i]>20 || nums[i]<0) {
-                System.out.println("Invalid number. Only the numbers between 0 and 20 are acceptable!!"
-                        + " Enter another.");
+                System.out.println("Invalid number!!" + " Enter another(numbers between 0 and 20 only)");
                 nums[i] = obj.nextInt();
             }
         }
