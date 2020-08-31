@@ -23,7 +23,7 @@ public class Main {
             }
             s1.add(x);
         }
-        System.out.println("Elements of second set:");
+        System.out.println("Elements of 2nd set:");
         for(int i=0; i<n2; i++) {
             int x=obj.nextInt();
             while(x<0 || x>10) {
