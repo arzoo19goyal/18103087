@@ -18,7 +18,7 @@ public class Main {
                 i2++;
                 emptyflag = 0;
             }
-            else if (a1[i1] < a2[i2]) {
+            else if (a2[i2] > a1[i1]) {
                 i1++;
             }
             else i2++;
@@ -36,22 +36,22 @@ public class Main {
         int n2=a2.length;
         int[] ours=new int[n1+n2];
         int i1=0, i2=0, index=0;
-        while(i1<n1 && i2<n2) {
+        while(i2<n2 && i1<n1) {
             if(a1[i1]==a2[i2]) {
                 ours[index++]=a1[i1++];
                 i2++;
             }
-            else if(a1[i1]<a2[i2]) {
+            else if(a2[i2] > a1[i1]) {
                 ours[index++]=a1[i1++];
             }
             else {
                 ours[index++]=a2[i2++];
             }
         }
-        while(i2<n2) {
+        while(n2 > i2) {
             ours[index++] = a2[i2++];
         }
-        while(i1<n1) {
+        while(n1 > i1) {
             ours[index++]=a1[i1++];
         }
         System.out.print("\nUnion is:");
@@ -61,7 +61,7 @@ public class Main {
 
     public static void complement(int []a1, int []ref) {
         int n1=a1.length, index=0;
-        int []ours=new int[11];
+        int []ours = new int[11];
         int i=0, j=0, emptyflag=1;
         while(index < 11 && i < n1) {
             if(a1[i] == ref[index]) {
@@ -73,7 +73,7 @@ public class Main {
                 emptyflag = 0;
             }
         }
-        while(index<11) {
+        while(index < 11) {
             ours[j++] = ref[index++];
             emptyflag = 0;
         }
@@ -86,8 +86,8 @@ public class Main {
     }
 
     public static int[] finetune(int[] a1) {
-        int n=a1.length;
-        int ref[]= new int [11];
+        int n = a1.length;
+        int ref[] = new int [11];
         for(int i=0; i<11; i++)
             ref[i]=0;
         for(int i=0; i<n; i++) {
