@@ -10,13 +10,13 @@ public class Main {
         int flag=0;
         while(i<string1.length() && i<string2.length())
         {
-            if(string1.charAt(i) < string2.charAt(i)) {
-                System.out.println(string1 + " is smaller than " + string2 + " lexicographically");
+            if(string1.charAt(i) > string2.charAt(i)) {
+                System.out.println(string2 + " is smaller than " + string1 + " lexicographically");
                 flag=1;
                 break;
             }
-            else if(string1.charAt(i) > string2.charAt(i)) {
-                System.out.println(string2 + " is smaller than " + string1 + " lexicographically");
+            else if(string1.charAt(i) < string2.charAt(i)) {
+                System.out.println(string1 + " is smaller than " + string2 + " lexicographically");
                 flag=1;
                 break;
             }
@@ -26,11 +26,11 @@ public class Main {
         }
         if(flag==0)
         {
-            if(i!=string1.length() && i==string2.length())
-                System.out.println(string2 + " is lexicographically smaller than " + string1);
-            else if(i==string1.length() && i!=string2.length())
+            if(i==string1.length() && i!=string2.length())
                 System.out.println(string1 + " is lexicographically smaller than " + string2);
-            else System.out.println(string2 + " and " + string1 + " are lexicographically equal");
+            else if(i!=string1.length() && i==string2.length())
+                System.out.println(string2 + " is lexicographically smaller than " + string1);
+            else System.out.println(string1 + " and " + string2 + " are lexicographically equal");
         }
     }
 }
