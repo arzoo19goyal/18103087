@@ -38,7 +38,7 @@ public class FocussedWebCrawlerPDF {
     			  
     			  
     			  //checking for static and relative urls
-    			  if(linkHref.contains("#") == false && linkHref.contains("http")== false && linkHref.contains("https")== false)
+    			  if(linkHref.contains("#") == false && linkHref.contains("https")== false && linkHref.contains("http")== false)
     			  {
     				  
     				  String baseUrl = newBase;
@@ -70,9 +70,9 @@ public class FocussedWebCrawlerPDF {
     				  
     			  }
     			  //if it is a complete url
-    			  else if (linkHref.contains("http://pec.ac.in")== true || linkHref.contains("https://pec.ac.in")== true)
+    			  else if (linkHref.contains("https://pec.ac.in")== true || linkHref.contains("http://pec.ac.in")== true)
     			  {
-    				  if(linkHref.contains(".PDF")==true || linkHref.contains(".pdf")==true)
+    				  if(linkHref.contains(".pdf")==true || linkHref.contains(".PDF")==true)
   		    		{
     					  
 
@@ -89,8 +89,8 @@ public class FocussedWebCrawlerPDF {
         			        } 
         					catch (IOException e) 
         					{
-        						System.out.println("Error in writing in File");
-        			            e.printStackTrace();
+        						System.out.println("Error... writing in File");
+							    e.printStackTrace();
         			        }
         				  }
         				  
@@ -116,14 +116,14 @@ public class FocussedWebCrawlerPDF {
             UrlFilePDF.write(header1);
             String line="\n";
             UrlFilePDF.write(line);
-            System.out.println("Url File Created");
+            System.out.println("Created your URL file");
             
     
             
         } 
 		catch (IOException e) 
 		{
-			System.out.println("Error in Creating File");
+			System.out.println("Error... Creating File");
             e.printStackTrace();
         }
 		
@@ -133,7 +133,7 @@ public class FocussedWebCrawlerPDF {
         
         //till stack is not empty and we have not reached maximum limit of our 
         //dfs crawler
-        while (!UrlPending.isEmpty() && depth>0)
+        while (depth>0 && !UrlPending.isEmpty())
         {
         		depth--;
         		String newBase=UrlPending.pop();
@@ -143,7 +143,7 @@ public class FocussedWebCrawlerPDF {
 		
 		 try {
 	         UrlFilePDF.close();
-	         System.out.println("File Closed Successfully");
+	         System.out.println(" Successfully closed your file");
 	     } catch (IOException e) {
 	         e.printStackTrace();
 	     }
