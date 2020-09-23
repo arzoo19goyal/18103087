@@ -10,8 +10,8 @@ import java.util.HashSet;
 public class FocussedWebCrawler {
 	
 	//creating UrlFile that will contains anchor tags and content
-	private static FileWriter UrlFileFaculty;
-	//creating ParaFile that will contains para tags and para content
+    private static FileWriter UrlFileFaculty;
+//creating ParaFile that will contains para tags and para content
     private static FileWriter ParaFileFaculty;
     //stack for dfs crawler
     private static Stack<String> UrlPending = new Stack<>();
@@ -30,12 +30,12 @@ public class FocussedWebCrawler {
         //Separating content from p tag 
         //and sending them in corresponding csv file
         for (Element paraElement : paras) {
-          String content = paraElement.text();
-          if(content.length()>0)
+          String paracontent = paraElement.text();
+          if(paracontent.length()>0)
           {
             try {
               //adding it to the file
-                    String newElement = "<p>" + "," + content; 
+                    String newElement = "<p>" + "," + paracontent; 
                     ParaFileFaculty.write(newElement);
                     String line="\n";
                     ParaFileFaculty.write(line);
@@ -43,7 +43,7 @@ public class FocussedWebCrawler {
                 } 
             catch (IOException e) 
             {
-              System.out.println("Error in writing in File");
+              System.out.println("Error... writing in File");
                     e.printStackTrace();
                 }
             }	
@@ -75,7 +75,7 @@ public class FocussedWebCrawler {
     			  
     			  
     			  //checking for static and relative urls
-    			  if(linkHref.contains("#") == false && linkHref.contains("http")== false && linkHref.contains("https")== false)
+    			  if(linkHref.contains("#") == false && linkHref.contains("https")== false &&  linkHref.contains("http")== false)
     			  {
     				  
     				  String baseUrl = newBase;
@@ -99,7 +99,7 @@ public class FocussedWebCrawler {
         			        } 
         					catch (IOException e) 
         					{
-        						System.out.println("Error in writing in File");
+        						System.out.println("Error... writing in File");
         			            e.printStackTrace();
         			        }
         				  }
@@ -150,19 +150,19 @@ public class FocussedWebCrawler {
 	public static void main(String[] args) {
 		try {
 			//adding headers in file 1
-			UrlFileFaculty = new FileWriter("UrlsFaculty.csv");
-            String header1 = "Anchor Tags , Text";
-            UrlFileFaculty.write(header1);
-            String line="\n";
-            UrlFileFaculty.write(line);
-            System.out.println("Url File Created");
-            
-            //adding headers in file 2
-            ParaFileFaculty = new FileWriter("ParasFaculty.csv");
-            String header2 = "Link Text,URL\n";
-            ParaFileFaculty.write(header2);
-            ParaFileFaculty.write(line);
-            System.out.println("Para File Created");
+		    UrlFileFaculty = new FileWriter("UrlsFaculty.csv");
+		    String header1 = "Anchor Tags , Text";
+		    UrlFileFaculty.write(header1);
+		    String line="\n";
+		    UrlFileFaculty.write(line);
+		    System.out.println("Url File Created");
+
+		    //adding headers in file 2
+		    ParaFileFaculty = new FileWriter("ParasFaculty.csv");
+		    String header2 = "Link Text,URL\n";
+		    ParaFileFaculty.write(header2);
+		    ParaFileFaculty.write(line);
+		    System.out.println("Para File Created");
             
         } 
 		catch (IOException e) 
