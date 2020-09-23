@@ -40,7 +40,7 @@ public class WebCrawler {
     			  
     			  
     			  //checking for static and relative urls
-    			  if(linkHref.contains("#") == false && linkHref.contains("http")== false && linkHref.contains("https")== false)
+    			  if(linkHref.contains("#") == false && linkHref.contains("https")== false && linkHref.contains("http")== false)
     			  {
     				  
     				  String baseUrl = newBase;
@@ -67,7 +67,7 @@ public class WebCrawler {
     				  
     			  }
     			  //if it is a complete url
-    			  else if (linkHref.contains("http://pec.ac.in")== true || linkHref.contains("https://pec.ac.in")== true)
+    			  else if (linkHref.contains("https://pec.ac.in")== true || linkHref.contains("http://pec.ac.in")== true)
     			  {
     				  if(!UrlVisited.contains(linkHref))
     				  {
@@ -82,7 +82,7 @@ public class WebCrawler {
     			        } 
     					catch (IOException e) 
     					{
-    						System.out.println("Error in writing in File");
+    						System.out.println("Error... writing in File");
     			            e.printStackTrace();
     			        }
     				  }
@@ -96,12 +96,12 @@ public class WebCrawler {
     		//Separating content from p tag 
     		//and sending them in corresponding csv file
     		for (Element paraElement : paras) {
-    			  String content = paraElement.text();
-    			  if(content.length()>0)
+    			  String paracontent = paraElement.text();
+    			  if(paracontent.length()>0)
     			  {
     				  try {
     						//adding it to the file
-    			            String newElement = "<p>" + "," + content; 
+    			            String newElement = "<p>" + "," + paracontent; 
     			            ParaFile.write(newElement);
     			            String line="\n";
     			            ParaFile.write(line);
@@ -126,18 +126,18 @@ public class WebCrawler {
 		try {
 			//adding headers in file 1
 			UrlFile = new FileWriter("Urls.csv");
-            String header1 = "Anchor Tags , Text";
-            UrlFile.write(header1);
-            String line="\n";
-            UrlFile.write(line);
-            System.out.println("Url File Created");
-            
-            //adding headers in file 2
-            ParaFile = new FileWriter("Paras.csv");
-            String header2 = "Link Text,URL\n";
-            ParaFile.write(header2);
-            ParaFile.write(line);
-            System.out.println("Para File Created");
+		    String header1 = "Anchor Tags , Text";
+		    UrlFile.write(header1);
+		    String line="\n";
+		    UrlFile.write(line);
+		    System.out.println("Url File Created");
+
+		    //adding headers in file 2
+		    ParaFile = new FileWriter("Paras.csv");
+		    String header2 = "Link Text,URL\n";
+		    ParaFile.write(header2);
+		    ParaFile.write(line);
+		    System.out.println("Para File Created");
             
         } 
 		catch (IOException e) 
@@ -148,16 +148,16 @@ public class WebCrawler {
 		
 		//starting url
 		UrlPending.add("http://pec.ac.in");
-        UrlVisited.add("http://pec.ac.in");
+		UrlVisited.add("http://pec.ac.in");
         
         //till stack is not empty and we have not reached maximum limit of our 
         //dfs crawler
-        while (!UrlPending.isEmpty() && depth>0)
+        while (depth>0 && !UrlPending.isEmpty())
         {
         		depth--;
         		String newBase=UrlPending.pop();
         		//first argument is the page which will be crawled and it will only be the base url for all the relative urls present on that page
-            	getUrls(newBase,newBase);   
+			getUrls(newBase,newBase);   
         }
 		
 		 try {
