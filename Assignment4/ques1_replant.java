@@ -25,7 +25,7 @@ class assg4_1 {
                 return false;
         return true;
     }
-
+    
     public static char available(String crops, int r, int c) {
         for(char x='a'; x<='z'; x++)
             if(validate(crops, x, r, c))
