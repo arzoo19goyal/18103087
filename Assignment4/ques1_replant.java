@@ -71,8 +71,7 @@ class ques1 {
     }
 
     public static boolean making_triangle (String[] crops, int row, int col) {
-        return (row+1<crops.length && crops[row].charAt(col)==crops[row+1].charAt(col)
-                &&
+        return (row+1<crops.length && crops[row].charAt(col)==crops[row+1].charAt(col) &&
                 col+1<crops[0].length() && crops[row].charAt(col)==crops[row].charAt(col+1));
     }
 
