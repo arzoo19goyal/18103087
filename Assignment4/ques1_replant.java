@@ -6,33 +6,35 @@ class ques1 {
         int n;
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
+        // m = in.nextInt();
         in.nextLine();
         String[] crops = new String[n];
         for (int i=0;i<n;i++){
             crops[i]=in.nextLine().trim();
         }
-        System.out.print(replant(crops);
+        System.out.print(replant(crops));
     }
 
     
     public static int replant(String[] crops) {
         int n=crops.length;     
-        int m=crops[0].length();
+        int rep1=0, rep2=0;
         String[] c= new String[n];
         if(n>=0)
             System.arraycopy(crops, 0, c, 0, n);
-        int rep1=0, rep2=0;
-        for(int i=0; i<n; i++)
-            for(int j=0; j<m; j++) {
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<crops[0].length(); j++) {
                 if(!isValid(crops, i, j)) {
                     crops[i] = crops[i].substring(0, j) + available(crops, i, j) + crops[i].substring(j + 1);
                     rep1++;
                 }
             }
+        }
 
         for(int i=0; i<n; i++)
-            for(int j=0; j<m; j++) {
-                if(!isValid(c, i, j) || making_triangle(crops, i, j)) {
+            for(int j=0; j<c[0].length(); j++) {
+                if(!isValid(c, i, j) || making_triangle(c, i, j)) {
                     c[i] = c[i].substring(0, j) + available(c, i, j) + c[i].substring(j + 1);
                     rep2++;
                 }
@@ -49,11 +51,14 @@ class ques1 {
         );
     }
 
-    public static char available(String crops, int row, int col) {
-        for(char x='a'; x<='z'; x++)
+    public static char available(String[] crops, int row, int col) {
+        for(char x='a'; x<='z'; x++){
             if(validate(crops, x, row, col))
                 return x;
+        }
+        return 'z';
     }
+
     public static boolean validate(String[] crops, char x, int row, int col) {
         if(row>0)
             if(x==crops[row-1].charAt(col))
